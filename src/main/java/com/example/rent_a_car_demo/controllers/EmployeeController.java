@@ -1,7 +1,7 @@
 package com.example.rent_a_car_demo.controllers;
 
 import com.example.rent_a_car_demo.models.Employee;
-import com.example.rent_a_car_demo.services.EmployeeService;
+import com.example.rent_a_car_demo.services.concretes.EmployeeManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 @RequestMapping("/api/Employees")
 public class EmployeeController {
 
-    private final EmployeeService employeeService;
+    private final EmployeeManager employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeManager employeeService) {
         this.employeeService = employeeService;
     }
     @GetMapping("/getall")

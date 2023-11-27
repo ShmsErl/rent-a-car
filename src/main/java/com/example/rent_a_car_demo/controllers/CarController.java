@@ -4,7 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddCarRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateCarRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetCarListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetCarResponse;
-import com.example.rent_a_car_demo.services.CarService;
+import com.example.rent_a_car_demo.services.concretes.CarManager;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CarController {
 
-    private final CarService carService;
+    private final CarManager carService;
 
 
     @GetMapping("/getall")

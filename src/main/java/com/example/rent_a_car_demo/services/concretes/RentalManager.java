@@ -1,4 +1,4 @@
-package com.example.rent_a_car_demo.services;
+package com.example.rent_a_car_demo.services.concretes;
 
 import com.example.rent_a_car_demo.models.Rental;
 import com.example.rent_a_car_demo.repositories.RentalRepository;
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class RentalService {
+public class RentalManager {
     public final RentalRepository rentalRepository;
 
-    public RentalService(RentalRepository rentalRepository) {
+    public RentalManager(RentalRepository rentalRepository) {
         this.rentalRepository = rentalRepository;
     }
 

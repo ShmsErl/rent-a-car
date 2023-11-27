@@ -4,8 +4,8 @@ import com.example.rent_a_car_demo.dtos.requests.AddUserRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateUserRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetUserListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetUserResponse;
-import com.example.rent_a_car_demo.models.User;
-import com.example.rent_a_car_demo.services.UserService;
+import com.example.rent_a_car_demo.services.abstracts.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,22 +13,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@AllArgsConstructor
 public class UsersController {
 
-    private final UserService userService;
+    public final UserService userService;
 
-    @Autowired
-    public UsersController(UserService userService) {
-        this.userService = userService;
-    }
+
 
     @GetMapping("/getall")
     public List<GetUserListResponse> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/get")
-    public GetUserResponse getUserById(@RequestParam(value ="id") Integer id) {
+        @GetMapping("/{id}")
+    public GetUserResponse getUserById(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
@@ -47,7 +45,7 @@ public class UsersController {
     }
 
     @PutMapping("/{id}")
-    public String updateUser(@PathVariable int id, @RequestBody UpdateUserRequest user) {
+    public String updateUser(@PathVariable int id ,@RequestBody UpdateUserRequest user) throws Exception {
 
 
 
@@ -55,7 +53,7 @@ public class UsersController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Integer id) {
+    public void deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
     }
 }

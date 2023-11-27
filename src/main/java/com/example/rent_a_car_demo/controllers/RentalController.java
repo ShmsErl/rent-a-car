@@ -1,7 +1,7 @@
 package com.example.rent_a_car_demo.controllers;
 
 import com.example.rent_a_car_demo.models.Rental;
-import com.example.rent_a_car_demo.services.RentalService;
+import com.example.rent_a_car_demo.services.concretes.RentalManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/rentals")
 public class RentalController {
 
-    private final RentalService rentalService;
+    private final RentalManager rentalService;
     @Autowired
-    public RentalController(RentalService rentalService) {
+    public RentalController(RentalManager rentalService) {
         this.rentalService = rentalService;
     }
     @GetMapping("/getall")

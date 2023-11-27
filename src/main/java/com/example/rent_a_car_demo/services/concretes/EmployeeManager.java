@@ -1,4 +1,4 @@
-package com.example.rent_a_car_demo.services;
+package com.example.rent_a_car_demo.services.concretes;
 
 import com.example.rent_a_car_demo.models.Employee;
 import com.example.rent_a_car_demo.repositories.EmployeeRepository;
@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmployeeService {
+public class EmployeeManager {
 
     private final EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeManager(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 

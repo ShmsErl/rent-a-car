@@ -1,4 +1,4 @@
-package com.example.rent_a_car_demo.services;
+package com.example.rent_a_car_demo.services.concretes;
 
 import com.example.rent_a_car_demo.dtos.requests.AddCarRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateCarRequest;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class CarService {
+public class CarManager {
     private final CarRepository carRepository;
 
 

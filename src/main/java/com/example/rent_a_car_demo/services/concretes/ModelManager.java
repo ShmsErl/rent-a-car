@@ -1,4 +1,4 @@
-package com.example.rent_a_car_demo.services;
+package com.example.rent_a_car_demo.services.concretes;
 
 import com.example.rent_a_car_demo.dtos.requests.AddModelRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateModelRequest;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ModelService {
+public class ModelManager {
 
     private ModelRepository modelRepository;
 

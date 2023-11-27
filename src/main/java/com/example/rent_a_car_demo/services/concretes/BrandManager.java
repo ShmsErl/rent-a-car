@@ -1,4 +1,4 @@
-package com.example.rent_a_car_demo.services;
+package com.example.rent_a_car_demo.services.concretes;
 
 import com.example.rent_a_car_demo.dtos.requests.AddBrandRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateBrandRequest;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class BrandService {
+public class BrandManager {
 
     private BrandRepository brandRepository;
 

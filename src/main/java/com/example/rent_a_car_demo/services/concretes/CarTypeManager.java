@@ -4,8 +4,10 @@ import com.example.rent_a_car_demo.dtos.requests.AddCarTypeRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateCarTypeRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetCarTypeListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetCarTypeResponse;
+import com.example.rent_a_car_demo.models.Car;
 import com.example.rent_a_car_demo.models.CarType;
 import com.example.rent_a_car_demo.repositories.CarTypeRepository;
+import com.example.rent_a_car_demo.services.abstracts.CarTypeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class CarTypeManager {
+public class CarTypeManager implements CarTypeService {
     private final CarTypeRepository carTypeRepository;
 
 
@@ -30,7 +32,7 @@ public class CarTypeManager {
         return getCarTypeListResponse;
     }
 
-    public GetCarTypeResponse getCarTypeById(Integer id) {
+    public GetCarTypeResponse getCarTypeById(int id) {
         CarType carType = carTypeRepository.findById(id).orElseThrow();
 
         GetCarTypeResponse dto = new GetCarTypeResponse();
@@ -55,7 +57,7 @@ public class CarTypeManager {
         return "Transaction Successful";
     }
 
-    public String deleteCarType(Integer id) throws Exception {
+    public String deleteCarType(int id) throws Exception {
         this.carTypeRepository.findById(id).orElseThrow(() -> new Exception("CarType not found!"));
 
         this.carTypeRepository.deleteById(id);

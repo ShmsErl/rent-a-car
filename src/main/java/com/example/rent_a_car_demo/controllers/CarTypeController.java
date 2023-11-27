@@ -4,6 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddCarTypeRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateCarTypeRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetCarTypeListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetCarTypeResponse;
+import com.example.rent_a_car_demo.services.abstracts.CarTypeService;
 import com.example.rent_a_car_demo.services.concretes.CarTypeManager;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/api/cartypes")
 public class CarTypeController {
-    private final CarTypeManager carTypeService;
+    private final CarTypeService carTypeService;
 
 
     @GetMapping("/getall")

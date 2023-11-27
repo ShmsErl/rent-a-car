@@ -6,6 +6,7 @@ import com.example.rent_a_car_demo.dtos.responses.GetBrandListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetBrandResponse;
 import com.example.rent_a_car_demo.models.Brand;
 import com.example.rent_a_car_demo.repositories.BrandRepository;
+import com.example.rent_a_car_demo.services.abstracts.BrandService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class BrandManager {
+public class BrandManager implements BrandService {
 
     private BrandRepository brandRepository;
 
@@ -30,7 +31,7 @@ public class BrandManager {
         return getBrandListResponse;
     }
 
-    public GetBrandResponse getBrandById(Integer id) {
+    public GetBrandResponse getBrandById(int id) {
         Brand brand = brandRepository.findById(id).orElseThrow();
 
         GetBrandResponse dto = new GetBrandResponse();

@@ -6,6 +6,7 @@ import com.example.rent_a_car_demo.dtos.responses.GetModelListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetModelResponse;
 import com.example.rent_a_car_demo.models.Model;
 import com.example.rent_a_car_demo.repositories.ModelRepository;
+import com.example.rent_a_car_demo.services.abstracts.ModelService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ModelManager {
+public class ModelManager implements ModelService {
 
     private ModelRepository modelRepository;
 

@@ -4,6 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddBrandRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateBrandRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetBrandListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetBrandResponse;
+import com.example.rent_a_car_demo.services.abstracts.BrandService;
 import com.example.rent_a_car_demo.services.concretes.BrandManager;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BrandsController {
 
-    private final BrandManager brandService;
+    private final BrandService brandService;
     @GetMapping("/getall")
     public List<GetBrandListResponse> getBrandList() {
 

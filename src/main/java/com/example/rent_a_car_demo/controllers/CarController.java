@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CarController {
 
-    private final CarManager carService;
+    private final CarService carService;
 
 
     @GetMapping("/getall")
@@ -39,7 +39,7 @@ public class CarController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteCar(@PathVariable Integer id) throws Exception {
+    public String deleteCar(@PathVariable int id) throws Exception {
         return this.carService.deleteCar(id);
     }
 }

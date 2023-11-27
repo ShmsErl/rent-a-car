@@ -4,6 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddModelRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateModelRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetModelListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetModelResponse;
+import com.example.rent_a_car_demo.services.abstracts.ModelService;
 import com.example.rent_a_car_demo.services.concretes.ModelManager;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ModelController {
 
-    private ModelManager modelService;
+    private ModelService modelService;
 
 
 

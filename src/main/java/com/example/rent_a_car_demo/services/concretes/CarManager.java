@@ -6,6 +6,7 @@ import com.example.rent_a_car_demo.dtos.responses.GetCarListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetCarResponse;
 import com.example.rent_a_car_demo.models.Car;
 import com.example.rent_a_car_demo.repositories.CarRepository;
+import com.example.rent_a_car_demo.services.abstracts.CarService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class CarManager {
+public class CarManager implements CarService {
     private final CarRepository carRepository;
 
 
@@ -33,7 +34,7 @@ public class CarManager {
         return getCarListResponses;
     }
 
-    public GetCarResponse getCarById(Integer id) {
+    public GetCarResponse getCarById(int id) {
         Car car = carRepository.findById(id).orElseThrow();
 
         GetCarResponse dto = new GetCarResponse();
@@ -68,7 +69,7 @@ public class CarManager {
         return "Transaction Successful!";
     }
 
-    public String deleteCar(Integer id) throws Exception {
+    public String deleteCar(int id) throws Exception {
         this.carRepository.findById(id).orElseThrow(() -> new Exception("Car not found!"));
 
         this.carRepository.deleteById(id);

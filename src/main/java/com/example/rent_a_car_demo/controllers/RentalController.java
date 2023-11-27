@@ -1,7 +1,13 @@
 package com.example.rent_a_car_demo.controllers;
 
+import com.example.rent_a_car_demo.dtos.requests.AddRentalRequest;
+import com.example.rent_a_car_demo.dtos.requests.UpdateRentalRequest;
+import com.example.rent_a_car_demo.dtos.responses.GetRentalListResponse;
+import com.example.rent_a_car_demo.dtos.responses.GetRentalResponse;
 import com.example.rent_a_car_demo.models.Rental;
+import com.example.rent_a_car_demo.services.abstracts.RentalService;
 import com.example.rent_a_car_demo.services.concretes.RentalManager;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,25 +15,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/rentals")
+@AllArgsConstructor
 public class RentalController {
 
-    private final RentalManager rentalService;
-    @Autowired
-    public RentalController(RentalManager rentalService) {
-        this.rentalService = rentalService;
-    }
+    private final RentalService rentalService;
+
     @GetMapping("/getall")
-    public List<Rental> getAllRentals(){return rentalService.getAllByRentals();}
+    public List<GetRentalListResponse> getAllRentals() {
+
+       return this.rentalService.getAllByRentals();
+    }
     @GetMapping("/get")
-    public Rental getRentalById(@RequestParam(value = "id") Integer id){return rentalService.getRentalById(id);
+    public GetRentalResponse getRentalById(@RequestParam(value = "id") Integer id){
+        return rentalService.getRentalById(id);
     }
     @PostMapping("/add")
-    public void saveRental(@RequestBody Rental rental){rentalService.saveRental(rental);}
+    public String saveRental(@RequestBody AddRentalRequest rental){return  rentalService.saveRental(rental);}
     @PutMapping("/{id}")
-    public void updateRental(@PathVariable Integer id,@RequestBody Rental rental){
-        rental.setId(id);
-        rentalService.saveRental(rental);
+    public String updateRental(@PathVariable int id,@RequestBody UpdateRentalRequest rental){
+
+      return   rentalService.updateRental(rental);
     }
     @DeleteMapping("/{id}")
-    public void deleteRental(@PathVariable Integer id){rentalService.deleteRental(id);}
+    public void deleteRental(@PathVariable int id){rentalService.deleteRental(id);}
 }

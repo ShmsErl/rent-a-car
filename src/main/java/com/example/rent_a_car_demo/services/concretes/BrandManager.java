@@ -62,4 +62,15 @@ public class BrandManager implements BrandService {
         this.brandRepository.deleteById(id);
         return "Deletion successful";
     }
+
+
+    @Override
+    public GetBrandResponse findByNameLike(String name) {
+        return this.brandRepository.getBrandByName( name );
+    }
+
+   @Override
+    public List<GetBrandResponse> findByNameIn(int name) {
+        return this.brandRepository.getBrandByNameIn(name);
+    }
 }

@@ -46,4 +46,15 @@ public class BrandsController {
 
         return this.brandService.deleteByBrand(id);
     }
+    @GetMapping("/brandnamelike")
+    public GetBrandResponse getBrandNameLike(@RequestParam String name){
+
+        return this.brandService.findByNameLike(name);
+    }
+    @GetMapping("/brandnamelength")
+    public List<GetBrandResponse> findByNameIn(@RequestParam int name){
+
+        return this.brandService.findByNameIn(name);
+    }
+
 }

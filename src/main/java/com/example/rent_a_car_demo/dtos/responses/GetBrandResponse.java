@@ -1,12 +1,15 @@
 package com.example.rent_a_car_demo.dtos.responses;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
 public class GetBrandResponse {
     private String name;
+
+    public GetBrandResponse(String name) {
+        this.name = name;
+    }
 }

@@ -57,4 +57,10 @@ public class BrandsController {
         return this.brandService.findByNameIn(name);
     }
 
+    @GetMapping("/brandnamein")
+    public List<GetBrandResponse> getByNameIn(@RequestParam List<String> name){
+
+        return this.brandService.getByNameIn(name);
+    }
+
 }

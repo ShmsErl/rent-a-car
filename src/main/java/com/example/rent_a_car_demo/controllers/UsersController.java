@@ -56,4 +56,10 @@ public class UsersController {
     public void deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
     }
+    @GetMapping("/avg")
+    public  Double findAverageAgeInAgeRange(int minAge, int maxAge){
+
+        return this.userService.findAverageAgeInAgeRange(minAge,maxAge);
+
+    }
 }

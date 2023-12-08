@@ -92,4 +92,11 @@ public class UserManager implements UserService {
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
+
+    public  Double findAverageAgeInAgeRange(int minAge, int maxAge){
+
+
+
+        return this.userRepository.findAverageAgeInAgeRange(minAge, maxAge);
+    }
 }

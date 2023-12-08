@@ -4,6 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddUserRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateUserRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetUserListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetUserResponse;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,6 +15,8 @@ public interface UserService {
     String updateUser(int id, UpdateUserRequest user) throws Exception;
     String saveUser(AddUserRequest user);
     void deleteUser(int id);
+
+    Double findAverageAgeInAgeRange(int minAge, int maxAge);
 
 
 }

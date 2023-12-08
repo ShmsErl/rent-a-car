@@ -4,6 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddModelRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateModelRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetModelListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetModelResponse;
+import com.example.rent_a_car_demo.models.Brand;
 import com.example.rent_a_car_demo.models.Model;
 import com.example.rent_a_car_demo.repositories.ModelRepository;
 import com.example.rent_a_car_demo.services.abstracts.ModelService;

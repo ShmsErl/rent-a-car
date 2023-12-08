@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface BrandRepository extends JpaRepository<Brand, Integer> {
 
-    Brand findByName(String name );
-
-    List<Brand> findByNameStartingWith(String names);
-
-    @Query("select new com.example.rent_a_car_demo.dtos.responses.GetBrandResponse(b.name) from Brand b where b.name like  %:name%")
-    GetBrandResponse getBrandByName(String name);
-
-    @Query("select new com.example.rent_a_car_demo.dtos.responses.GetBrandResponse(b.name) from Brand b where length(b.name) > :name")
-   List< GetBrandResponse> getBrandByNameIn( int  name);
+    List<Brand> findByNameStartingWith(String name);
+    List<Brand> findByNameEndingWith(String name);
+    boolean existsByName(String name);
+    @Query("SELECT DISTINCT new com.example.rent_a_car_demo.dtos.responses.GetBrandResponse(b.name)" +
+            "FROM Brand b Where b.name = :name")
+    List<GetBrandResponse> findDistinctByName(String name);
+    @Query("SELECT new com.example.rent_a_car_demo.dtos.responses.GetBrandResponse(b.name)" +
+            " FROM Brand b WHERE LENGTH(b.name) > :length")
+    List<GetBrandResponse> findByNameLengthGreaterThan(int length);
 }

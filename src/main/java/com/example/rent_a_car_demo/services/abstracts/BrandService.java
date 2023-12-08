@@ -25,4 +25,6 @@ public interface BrandService {
 
     List<GetBrandResponse> findByNameIn(int name);
 
+    List<GetBrandResponse> getByNameIn(List<String> name);
+
 }

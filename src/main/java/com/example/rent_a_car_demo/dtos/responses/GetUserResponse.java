@@ -25,4 +25,14 @@ public class GetUserResponse {
     private String gender;
 
     private Date birthDate;
+
+    public GetUserResponse(String firstName, String lastName, String username, String email, String phone, String gender, Date birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.birthDate = birthDate;
+    }
 }

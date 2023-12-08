@@ -21,10 +21,6 @@ public interface BrandService {
 
     String deleteByBrand(int id) throws Exception;
 
-    GetBrandResponse findByNameLike(String name);
 
-    List<GetBrandResponse> findByNameIn(int name);
-
-    List<GetBrandResponse> getByNameIn(List<String> name);
 
 }

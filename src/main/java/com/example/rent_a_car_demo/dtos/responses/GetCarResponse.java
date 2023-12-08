@@ -5,11 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class GetCarResponse {
+
     private Integer year;
     private String color;
     private Double rentalFee;
     private String licencePlate;
+    private GetCarTypeResponse getCarTypeResponse;
+
+    public GetCarResponse(Integer year, String color, Double rentalFee, String licencePlate, GetCarTypeResponse getCarTypeResponse) {
+        this.year = year;
+        this.color = color;
+        this.rentalFee = rentalFee;
+        this.licencePlate = licencePlate;
+        this.getCarTypeResponse = getCarTypeResponse;
+    }
 }

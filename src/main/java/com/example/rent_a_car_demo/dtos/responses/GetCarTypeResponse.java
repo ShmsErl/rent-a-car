@@ -4,8 +4,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class GetCarTypeResponse {
     private String name;
+
+    public GetCarTypeResponse(String name) {
+        this.name = name;
+    }
 }

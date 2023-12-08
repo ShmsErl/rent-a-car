@@ -14,15 +14,18 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     List<Car> findByYearAndColorOrderByRentalFeeDesc(Integer year, String color);
 
-    @Query("SELECT new  com.example.rent_a_car_demo.dtos.responses.GetCarResponse(c.year, c.color, c.rentalFee, c.licencePlate," +
-            "new com.example.rent_a_car_demo.services.dtos.responses.getResponses.GetCarTypeResponse(ct.name))" +
-            " FROM Car c LEFT JOIN c.carType ct WHERE (c.year = :year AND c.color = :color) OR c.rentalFee < :rentalFee")
-    List<GetCarResponse> findByYearAndColorOrRentalFeeLessThan(Integer year, String color, Double rentalFee);
+    //yıl ve renge göre ya da kiralama ücreti tutardan fazla(lessthan)
 
-    @Query("SELECT new  com.example.rent_a_car_demo.dtos.responses.GetCarResponse(c.year, c.color, c.rentalFee, c.licencePlate," +
-            "new com.example.rent_a_car_demo.services.dtos.responses.getResponses.GetCarTypeResponse(ct.name))" +
-            " FROM Car c LEFT JOIN c.carType ct WHERE c.rentalFee BETWEEN :minRentalFee AND :maxRentalFee")
-    List<GetCarResponse> findByRentalFeeBetween(Double minRentalFee, Double maxRentalFee);
+    @Query("select new com.example.rent_a_car_demo.dtos.responses.GetCarResponse(c.year,c.color,c.rentalFee,c.licencePlate, new com.example.rent_a_car_demo.dtos.responses.GetCarTypeResponse(c.carType.name)) " +
+            "from Car c where c.year = : year and c.color = : color or c.rentalFee = : rentalFee  ")
+    List<GetCarResponse> jkkjhkj(String color, int year, double rentalFee);
+
+
+    @Query("select new com.example.rent_a_car_demo.dtos.responses.GetCarResponse(c.year,c.color,c.rentalFee,c.licencePlate, " +
+            "new com.example.rent_a_car_demo.dtos.responses.GetCarTypeResponse(c.carType.name)) from Car c  where c.rentalFee between  :minRentalFee and :maxRentalFee")
+    List<GetCarResponse> getByModelRentalFeeBetween(double minRentalFee, double maxRentalFee);
+
+
 
     boolean existsByLicencePlate(String licancePlate);
 }

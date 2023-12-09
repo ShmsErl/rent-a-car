@@ -21,6 +21,14 @@ public interface BrandService {
 
     String deleteByBrand(int id) throws Exception;
 
+    List<GetBrandListResponse> findByNameStartingWith(String name);
 
+    List<GetBrandListResponse> findByNameEndingWith(String name);
+
+    boolean existsByName(String name);
+
+    List<GetBrandListResponse> findDistinctByName(String name);
+
+    List<GetBrandListResponse> findByNameLengthGreaterThan(int length);
 
 }

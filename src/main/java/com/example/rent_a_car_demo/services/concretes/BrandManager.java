@@ -4,6 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddBrandRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateBrandRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetBrandListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetBrandResponse;
+import com.example.rent_a_car_demo.dtos.responses.GetUserListResponse;
 import com.example.rent_a_car_demo.models.Brand;
 import com.example.rent_a_car_demo.repositories.BrandRepository;
 import com.example.rent_a_car_demo.services.abstracts.BrandService;
@@ -67,9 +68,44 @@ public class BrandManager implements BrandService {
         return "Deletion successful";
     }
 
+    @Override
+    public List<GetBrandListResponse> findByNameStartingWith(String name) {
+        List<Brand> brands = this.brandRepository.findByNameStartingWith(name);
+        List<GetBrandListResponse> responses = new ArrayList<>();
+        GetBrandListResponse response = new GetBrandListResponse();
+        brands.forEach(brand -> {
+            response.setName(brand.getName());
 
+            responses.add(response);
+        });
+        return responses;
+    }
 
+    @Override
+    public List<GetBrandListResponse> findByNameEndingWith(String name) {
+        List<Brand> brands = this.brandRepository.findByNameEndingWith(name);
+        List<GetBrandListResponse> responses = new ArrayList<>();
+        GetBrandListResponse response = new GetBrandListResponse();
+        brands.forEach(brand -> {
+            response.setName(brand.getName());
 
+            responses.add(response);
+        });
+        return responses;
+    }
 
+    @Override
+    public boolean existsByName(String name) {
+        return this.existsByName(name) ;
+    }
 
+    @Override
+    public List<GetBrandListResponse> findDistinctByName(String name) {
+        return this.brandRepository.findDistinctByName(name);
+    }
+
+    @Override
+    public List<GetBrandListResponse> findByNameLengthGreaterThan(int length) {
+        return this.brandRepository.findByNameLengthGreaterThan(length);
+    }
 }

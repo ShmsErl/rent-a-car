@@ -46,6 +46,30 @@ public class BrandsController {
 
         return this.brandService.deleteByBrand(id);
     }
+    @GetMapping("/findbynamestartwith")
+    public List<GetBrandListResponse> findByNameStartingWith(@RequestParam String name) {
+
+        return  this.brandService.findByNameStartingWith(name);
+    }
+    @GetMapping("/findbynameendwith")
+    public List<GetBrandListResponse> findByNameEndingWith(@RequestParam String name) {
+
+        return this.brandService.findByNameEndingWith(name);
+    }
+    @GetMapping("/existsbyname")
+    public boolean existsByName(@RequestParam String name) {
+        return this.brandService.existsByName(name);
+    }
+    @GetMapping("/finddistinctbyname")
+    public List<GetBrandListResponse> findDistinctByName(@RequestParam String name) {
+
+        return this.brandService.findDistinctByName(name);
+    }
+    @GetMapping("/findbynamelengthgreaterthan")
+    public List<GetBrandListResponse> findByNameLengthGreaterThan(@RequestParam  int length) {
+
+        return this.brandService.findByNameLengthGreaterThan(length);
+    }
 
 
 

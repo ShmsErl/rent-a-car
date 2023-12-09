@@ -6,8 +6,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class GetBrandListResponse {
     private String name;
+
+    public GetBrandListResponse(String name) {
+        this.name = name;
+    }
 }

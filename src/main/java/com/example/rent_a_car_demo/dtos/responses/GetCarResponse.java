@@ -13,12 +13,15 @@ public class GetCarResponse {
     private Double rentalFee;
     private String licencePlate;
     private GetCarTypeResponse getCarTypeResponse;
+    private GetModelResponse model;
 
-    public GetCarResponse(Integer year, String color, Double rentalFee, String licencePlate, GetCarTypeResponse getCarTypeResponse) {
+
+    public GetCarResponse(Integer year, String color, Double rentalFee, String licencePlate, GetCarTypeResponse getCarTypeResponse, GetModelResponse model) {
         this.year = year;
         this.color = color;
         this.rentalFee = rentalFee;
         this.licencePlate = licencePlate;
         this.getCarTypeResponse = getCarTypeResponse;
+        this.model = model;
     }
 }

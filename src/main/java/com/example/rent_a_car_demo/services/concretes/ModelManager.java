@@ -3,6 +3,7 @@ package com.example.rent_a_car_demo.services.concretes;
 import com.example.rent_a_car_demo.dtos.GetModelFuelTypeCountResponse;
 import com.example.rent_a_car_demo.dtos.requests.AddModelRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateModelRequest;
+import com.example.rent_a_car_demo.dtos.responses.GetBrandResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetModelListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetModelResponse;
 import com.example.rent_a_car_demo.models.Brand;
@@ -33,7 +34,7 @@ public class ModelManager implements ModelService {
             response.setName(model.getName());
             response.setEnginePower(model.getEnginePower());
             response.setFuelType(model.getFuelType());
-            response.setBrandName(model.getBrand().getName());
+            response.setBrand(new GetBrandResponse(model.getBrand().getName()));
 
             responses.add(response);
 
@@ -49,7 +50,7 @@ public class ModelManager implements ModelService {
         response.setName(model1.getName());
         response.setEnginePower(model1.getEnginePower());
         response.setFuelType(model1.getFuelType());
-        response.setBrandName(model1.getBrand().getName());
+        response.setBrand(new GetBrandResponse(model1.getBrand().getName()));
 
 
         return response;

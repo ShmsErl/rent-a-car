@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class GetModelResponse {
 
@@ -15,5 +15,14 @@ public class GetModelResponse {
 
     private String enginePower;
 
-    private String brandName;
+    private GetBrandResponse brand;
+
+    public GetModelResponse(String name, String fuelType, String enginePower, GetBrandResponse brand) {
+        this.name = name;
+        this.fuelType = fuelType;
+        this.enginePower = enginePower;
+        this.brand = brand;
+    }
 }
+
+

@@ -17,5 +17,5 @@ public class GetModelListResponse {
 
     private String enginePower;
 
-    private String brandName;
+    private GetBrandResponse brand;
 }

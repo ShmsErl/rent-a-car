@@ -2,8 +2,7 @@ package com.example.rent_a_car_demo.services.concretes;
 
 import com.example.rent_a_car_demo.dtos.requests.AddCarRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateCarRequest;
-import com.example.rent_a_car_demo.dtos.responses.GetCarListResponse;
-import com.example.rent_a_car_demo.dtos.responses.GetCarResponse;
+import com.example.rent_a_car_demo.dtos.responses.*;
 import com.example.rent_a_car_demo.models.Car;
 import com.example.rent_a_car_demo.repositories.CarRepository;
 import com.example.rent_a_car_demo.services.abstracts.CarService;
@@ -76,4 +75,57 @@ public class CarManager implements CarService {
         return "Delete Successful!";
     }
 
+    @Override
+    public List<GetCarListResponse> findByColorIgnoreCase(String color) {
+        List<Car> carList = this.carRepository.findByColorIgnoreCase(color);
+        List<GetCarListResponse> getCarListResponses = new ArrayList<>();
+
+        for (Car car : carList) {
+            GetCarListResponse dto = new GetCarListResponse();
+            dto.setColor(car.getColor());
+            dto.setYear(car.getYear());
+            dto.setRentalFee(car.getRentalFee());
+            dto.setLicencePlate(car.getLicencePlate());
+            dto.setCarType(new GetCarTypeResponse(car.getCarType().getName()));
+            dto.setModel(new GetModelResponse(dto.getModel().getName(),
+                    dto.getModel().getFuelType(),
+                    dto.getModel().getEnginePower(),
+                    new GetBrandResponse(dto.getModel().getBrand().getName())));
+            getCarListResponses.add(dto);
+        }
+        return getCarListResponses;
+
+    }
+
+    @Override
+    public List<GetCarListResponse> findByYearAndColorOrderByRentalFeeDesc(Integer year, String color) {
+        List<Car> carList = this.carRepository.findByYearAndColorOrderByRentalFeeDesc(year,color);
+        List<GetCarListResponse> getCarListResponses = new ArrayList<>();
+
+        for (Car car : carList) {
+            GetCarListResponse dto = new GetCarListResponse();
+            dto.setColor(car.getColor());
+            dto.setYear(car.getYear());
+            dto.setRentalFee(car.getRentalFee());
+            dto.setLicencePlate(car.getLicencePlate());
+            dto.setCarType(new GetCarTypeResponse(car.getCarType().getName()));
+            dto.setModel(new GetModelResponse(dto.getModel().getName(),
+                    dto.getModel().getFuelType(),
+                    dto.getModel().getEnginePower(),
+                    new GetBrandResponse(dto.getModel().getBrand().getName())));
+
+            getCarListResponses.add(dto);
+        }
+        return getCarListResponses;
+    }
+
+    @Override
+    public List<GetCarListResponse> searchByYearAndColorOrRentalFee(String color, Integer year ,Double rentalFee) {
+        return this.carRepository.searchByYearAndColorOrRentalFee(color,year,rentalFee);
+    }
+
+    @Override
+    public List<GetCarListResponse> getByModelRentalFeeBetween(double minRentalFee, double maxRentalFee) {
+        return this.carRepository.getByModelRentalFeeBetween(minRentalFee,maxRentalFee);
+    }
 }

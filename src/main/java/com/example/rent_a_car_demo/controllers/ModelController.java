@@ -1,5 +1,6 @@
 package com.example.rent_a_car_demo.controllers;
 
+import com.example.rent_a_car_demo.dtos.GetModelFuelTypeCountResponse;
 import com.example.rent_a_car_demo.dtos.requests.AddModelRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateModelRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetModelListResponse;
@@ -11,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/models")
@@ -47,5 +49,15 @@ public class ModelController {
     public String deleteModel(@PathVariable int id) throws Exception {
 
         return this.modelService.deleteByModel(id);
+    }
+    @GetMapping("/fueltypecount")
+    public Long getFuelTypeCount(@RequestParam String fuelType){
+
+        return this.modelService.getModelList(fuelType);
+    }
+    @GetMapping("/COUNT")
+    public List<GetModelFuelTypeCountResponse> getCount(@RequestParam Long value){
+
+        return this.modelService.getModelFuelTypeCount(value);
     }
 }

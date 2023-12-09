@@ -4,6 +4,7 @@ import com.example.rent_a_car_demo.dtos.requests.AddAddressRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateAddressRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetAddressListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetAddressResponse;
+import com.example.rent_a_car_demo.dtos.responses.GetUserResponse;
 import com.example.rent_a_car_demo.models.Address;
 import com.example.rent_a_car_demo.repositories.AddressRepository;
 import com.example.rent_a_car_demo.services.abstracts.AddressService;
@@ -34,12 +35,10 @@ public class AddressManager implements AddressService {
             listResponse.setCountry(address.getCountry());
             listResponse.setRegion(address.getRegion());
             listResponse.setZipCode(address.getZipCode());
-            listResponse.setUsername(address.getUser().getUsername());
-
-
+            listResponse.setUsername(new GetUserResponse(address.getUser().getUsername(),
+                    address.getUser().getFirstName(), address.getUser().getLastName(), address.getUser().getEmail(),
+                    address.getUser().getPhone(), address.getUser().getGender(), address.getUser().getBirthDate()));
             response.add(listResponse);
-
-
         }
         return response;
 
@@ -53,7 +52,9 @@ public class AddressManager implements AddressService {
         response.setAddress(address.getAddress());
         response.setCity(address.getCity());
         response.setRegion(address.getRegion());
-        response.setUsername(address.getUser().getUsername());
+        response.setUsername(new GetUserResponse(address.getUser().getUsername(),
+                address.getUser().getFirstName(), address.getUser().getLastName(), address.getUser().getEmail(),
+                address.getUser().getPhone(), address.getUser().getGender(), address.getUser().getBirthDate()));
         response.setZipCode(address.getZipCode());
         response.setCountry(address.getCountry());
 
@@ -96,4 +97,57 @@ public class AddressManager implements AddressService {
     }
 
 
+    @Override
+    public List<GetAddressListResponse> findByCountryOrCity(String country, String city) {
+        List<Address> addresses = this.addressRepository.findByCountryOrCity(country, city);
+        List<GetAddressListResponse> responses = new ArrayList<>();
+        GetAddressListResponse response = new GetAddressListResponse();
+        addresses.forEach(address -> {
+            response.setAddress(address.getAddress());
+            response.setCity(address.getCity());
+            response.setRegion(address.getRegion());
+            response.setUsername(new GetUserResponse(address.getUser().getUsername(),
+                    address.getUser().getFirstName(), address.getUser().getLastName(), address.getUser().getEmail(),
+                    address.getUser().getPhone(), address.getUser().getGender(), address.getUser().getBirthDate()));
+            response.setZipCode(address.getZipCode());
+            response.setCountry(address.getCountry());
+            responses.add(response);
+
+
+        });
+        return responses;
+    }
+
+    @Override
+    public List<GetAddressListResponse> findByCountryLike(String country) {
+        List<Address> addresses = this.addressRepository.findByCountryLike(country);
+        List<GetAddressListResponse> responses = new ArrayList<>();
+        GetAddressListResponse response = new GetAddressListResponse();
+        addresses.forEach(address -> {
+            response.setAddress(address.getAddress());
+            response.setCity(address.getCity());
+            response.setRegion(address.getRegion());
+            response.setUsername(new GetUserResponse(address.getUser().getUsername(),
+                    address.getUser().getFirstName(), address.getUser().getLastName(), address.getUser().getEmail(),
+                    address.getUser().getPhone(), address.getUser().getGender(), address.getUser().getBirthDate()));
+            response.setZipCode(address.getZipCode());
+            response.setCountry(address.getCountry());
+
+            responses.add(response);
+
+
+        });
+        return responses;
+    }
+
+    @Override
+    public List<GetAddressListResponse> addressByCityLike(String city) {
+
+            return this.addressRepository.addressByCityLike(city);
+    }
+
+    @Override
+    public List<GetAddressListResponse> findByCountryIn(List<String> countryList) {
+        return this.addressRepository.findByCountryIn(countryList);
+    }
 }

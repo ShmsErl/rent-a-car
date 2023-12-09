@@ -20,7 +20,7 @@ public class GetAddressResponse {
 
     private String zipCode;
 
-    private String username;
+    private GetUserResponse username;
 
 
 }

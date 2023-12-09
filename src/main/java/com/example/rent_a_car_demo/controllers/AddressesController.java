@@ -46,4 +46,25 @@ public class AddressesController {
     public void deleteAddress(@PathVariable int id) {
         addressService.deleteAddress(id);
     }
+    @GetMapping("/findbycountryorcity")
+    public List<GetAddressListResponse> findByCountryOrCity(@RequestParam String country, String city) {
+
+        return this.addressService.findByCountryOrCity(country, city);
+    }
+
+    @GetMapping("/findbycountrylike")
+    public List<GetAddressListResponse> findByCountryLike(@RequestParam String country) {
+
+        return this.addressService.findByCountryLike(country) ;
+    }
+    @GetMapping("/addressbycitylike")
+    public List<GetAddressListResponse> addressByCityLike(@RequestParam String city) {
+
+        return this.addressService.addressByCityLike(city);
+    }
+    @GetMapping("/findbybountryin")
+    public List<GetAddressListResponse> findByCountryIn(@RequestParam List<String> countryList) {
+
+        return this.addressService.findByCountryIn(countryList);
+    }
 }

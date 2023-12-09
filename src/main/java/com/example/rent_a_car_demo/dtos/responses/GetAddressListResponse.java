@@ -21,9 +21,9 @@ public class GetAddressListResponse {
 
     private String zipCode;
 
-    private String username;
+    private GetUserResponse username;
 
-    public GetAddressListResponse(String address, String country, String region, String city,String zipCode, String username){
+    public GetAddressListResponse(String address, String country, String region, String city,String zipCode, GetUserResponse username){
         this.address = address;
         this.country = country;
         this.region = region;

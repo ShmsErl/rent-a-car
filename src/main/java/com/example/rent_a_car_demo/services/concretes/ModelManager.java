@@ -1,5 +1,6 @@
 package com.example.rent_a_car_demo.services.concretes;
 
+import com.example.rent_a_car_demo.dtos.GetModelFuelTypeCountResponse;
 import com.example.rent_a_car_demo.dtos.requests.AddModelRequest;
 import com.example.rent_a_car_demo.dtos.requests.UpdateModelRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetModelListResponse;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -91,5 +93,15 @@ public class ModelManager implements ModelService {
         return "Deletion successful";
     }
 
+    @Override
+    public List< GetModelFuelTypeCountResponse> getModelFuelTypeCount( Long value){
 
+
+        return this.modelRepository.getByFuelType(value);
+    }
+
+    @Override
+    public Long getModelList(String fuelType) {
+        return this.modelRepository.getModelList(fuelType);
+    }
 }

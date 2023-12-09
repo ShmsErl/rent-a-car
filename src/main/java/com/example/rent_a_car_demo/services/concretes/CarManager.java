@@ -87,10 +87,10 @@ public class CarManager implements CarService {
             dto.setRentalFee(car.getRentalFee());
             dto.setLicencePlate(car.getLicencePlate());
             dto.setCarType(new GetCarTypeResponse(car.getCarType().getName()));
-            dto.setModel(new GetModelResponse(dto.getModel().getName(),
-                    dto.getModel().getFuelType(),
-                    dto.getModel().getEnginePower(),
-                    new GetBrandResponse(dto.getModel().getBrand().getName())));
+            dto.setModel(new GetModelResponse(car.getModel().getName(),
+                    car.getModel().getFuelType(),
+                    car.getModel().getEnginePower(),
+                    new GetBrandResponse(car.getModel().getBrand().getName())));
             getCarListResponses.add(dto);
         }
         return getCarListResponses;
@@ -109,10 +109,10 @@ public class CarManager implements CarService {
             dto.setRentalFee(car.getRentalFee());
             dto.setLicencePlate(car.getLicencePlate());
             dto.setCarType(new GetCarTypeResponse(car.getCarType().getName()));
-            dto.setModel(new GetModelResponse(dto.getModel().getName(),
-                    dto.getModel().getFuelType(),
-                    dto.getModel().getEnginePower(),
-                    new GetBrandResponse(dto.getModel().getBrand().getName())));
+            dto.setModel(new GetModelResponse(car.getModel().getName(),
+                    car.getModel().getFuelType(),
+                    car.getModel().getEnginePower(),
+                    new GetBrandResponse(car.getModel().getBrand().getName())));
 
             getCarListResponses.add(dto);
         }

@@ -11,7 +11,7 @@ public interface ModelRepository extends JpaRepository<Model, Integer> {
 
     Model findByName(String name);
 
-    Model findByFuelTypeAndEnginePower(String fuelType, String enginePower);
+    List<Model> findByFuelTypeAndEnginePower(String fuelType, String enginePower);
 
     @Query("select Count(m.fuelType) from Model m where m.fuelType = :fuelType ")
     Long getModelList(String fuelType);

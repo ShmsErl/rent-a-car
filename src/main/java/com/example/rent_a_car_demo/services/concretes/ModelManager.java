@@ -86,6 +86,38 @@ public class ModelManager implements ModelService {
 
     }
 
+    @Override
+    public GetModelResponse findByName(String name) {
+
+        Model model = this.modelRepository.findByName(name);
+        GetModelResponse response = new GetModelResponse();
+
+        response.setName(model.getName());
+        response.setFuelType(model.getFuelType());
+        response.setEnginePower(model.getEnginePower());
+        response.setBrand(new GetBrandResponse(model.getBrand().getName()));
+        return response;
+    }
+
+    @Override
+    public List<GetModelListResponse> findByFuelTypeAndEnginePower(String fuelType, String enginePower) {
+
+        List<Model> models = this.modelRepository.findByFuelTypeAndEnginePower(fuelType, enginePower);
+        List<GetModelListResponse> responses = new ArrayList<>();
+        GetModelListResponse response = new GetModelListResponse();
+
+        models.forEach(model -> {
+            response.setName(model.getName());
+            response.setFuelType(model.getFuelType());
+            response.setEnginePower(model.getEnginePower());
+            response.setBrand(new GetBrandResponse(model.getBrand().getName()));
+
+            responses.add(response);
+
+        });
+        return responses;
+    }
+
     public String deleteByModel(int id) throws Exception {
 
         this.modelRepository.findById(id).orElseThrow(() -> new Exception("Could not"));
@@ -95,7 +127,7 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public List< GetModelFuelTypeCountResponse> getModelFuelTypeCount( Long value){
+    public List<GetModelFuelTypeCountResponse> getModelFuelTypeCount(Long value) {
 
 
         return this.modelRepository.getByFuelType(value);

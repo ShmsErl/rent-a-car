@@ -50,6 +50,16 @@ public class ModelController {
 
         return this.modelService.deleteByModel(id);
     }
+    @GetMapping("/findbyname")
+    public GetModelResponse findByName(@RequestParam String name) {
+
+        return this.modelService.findByName(name);
+    }
+    @GetMapping("/findbyfueltypeandenginepower")
+    public List<GetModelListResponse> findByFuelTypeAndEnginePower(@RequestParam String fuelType, String enginePower) {
+
+        return this.modelService.findByFuelTypeAndEnginePower(fuelType,enginePower);
+    }
     @GetMapping("/fueltypecount")
     public Long getFuelTypeCount(@RequestParam String fuelType){
 

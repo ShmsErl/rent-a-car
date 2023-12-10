@@ -7,8 +7,12 @@ import com.example.rent_a_car_demo.dtos.responses.GetUserResponse;
 import com.example.rent_a_car_demo.services.abstracts.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,20 +23,19 @@ public class UsersController {
     public final UserService userService;
 
 
-
     @GetMapping("/getall")
     public List<GetUserListResponse> getAllUsers() {
         return userService.getAllUsers();
     }
 
-        @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public GetUserResponse getUserById(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
 
-    @GetMapping("/byUsername/{username}")
-    public GetUserResponse getUserByUsername(@PathVariable String username) {
+    @GetMapping("/byUsername")
+    public GetUserResponse getUserByUsername(@RequestParam String username) {
         return userService.getUserByUsername(username);
     }
 
@@ -45,21 +48,35 @@ public class UsersController {
     }
 
     @PutMapping("/{id}")
-    public String updateUser(@PathVariable int id ,@RequestBody UpdateUserRequest user) throws Exception {
+    public String updateUser(@PathVariable int id, @RequestBody UpdateUserRequest user) throws Exception {
 
 
-
-        return   userService.updateUser(id,user);
+        return userService.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
     }
-    @GetMapping("/avg")
-    public  Double findAverageAgeInAgeRange(int minAge, int maxAge){
 
-        return this.userService.findAverageAgeInAgeRange(minAge,maxAge);
+    @GetMapping("/avg")
+    public Double findAverageAgeInAgeRange(int minAge, int maxAge) {
+
+        return this.userService.findAverageAgeInAgeRange(minAge, maxAge);
 
     }
+    @GetMapping("/findbybirtdateafter")
+    public List<GetUserResponse> findByBirthDateAfter(@RequestParam LocalDate birthDate) {
+
+        Date date = Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+
+        return this.userService.findByBirthDateAfter(date);
+    }
+    @GetMapping("/findbyemailandpassword")
+    public List<GetUserResponse> findByEmailAndPassword(@RequestParam String email, String password) {
+
+        return this.userService.findByEmailAndPassword(email,password)  ;
+    }
+
 }

@@ -31,4 +31,6 @@ public interface BrandService {
 
     List<GetBrandListResponse> findByNameLengthGreaterThan(int length);
 
+    void updateNameByIdAndName(String name, int id);
+
 }

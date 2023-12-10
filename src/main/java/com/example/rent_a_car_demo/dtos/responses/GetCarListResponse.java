@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class GetCarListResponse {
     private Integer year;
     private String color;
@@ -13,12 +14,12 @@ public class GetCarListResponse {
     private GetModelResponse model;
     private GetCarTypeResponse carType;
 
-    public GetCarListResponse(Integer year, String color, Double rentalFee, String licencePlate, GetModelResponse model, GetCarTypeResponse carType) {
+    /*public GetCarListResponse(Integer year, String color, Double rentalFee, String licencePlate, GetModelResponse model, GetCarTypeResponse carType) {
         this.year = year;
         this.color = color;
         this.rentalFee = rentalFee;
         this.licencePlate = licencePlate;
         this.model = model;
         this.carType = carType;
-    }
+    }*/
 }

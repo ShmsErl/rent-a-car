@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 @Data
 @NoArgsConstructor
+
 public class GetBrandListResponse {
     private String name;
 

@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -63,10 +64,16 @@ public class UserManager implements UserService {
 
 
         User user = this.userRepository.findByUsername(username);
-        GetUserResponse getUserResponse =
-                this.mapperService
-                        .forResponse()
-                        .map(user, GetUserResponse.class);
+        GetUserResponse getUserResponse =new GetUserResponse();
+
+        getUserResponse.setUsername(user.getUsername());
+        getUserResponse.setEmail(user.getEmail());
+        getUserResponse.setGender(user.getGender());
+        getUserResponse.setPhone(user.getPhone());
+        getUserResponse.setFirstName(user.getFirstName());
+        getUserResponse.setBirthDate(user.getBirthDate());
+        getUserResponse.setLastName(user.getLastName());
+
         return getUserResponse;
     }
 
@@ -98,5 +105,17 @@ public class UserManager implements UserService {
 
 
         return this.userRepository.findAverageAgeInAgeRange(minAge, maxAge);
+    }
+
+    @Override
+    public List<GetUserResponse> findByBirthDateAfter(Date birthDate) {
+
+
+        return this.userRepository.findByBirthDateAfter(birthDate);
+    }
+
+    @Override
+    public List<GetUserResponse> findByEmailAndPassword(String email, String password) {
+        return this.userRepository.findByEmailAndPassword(email,password);
     }
 }

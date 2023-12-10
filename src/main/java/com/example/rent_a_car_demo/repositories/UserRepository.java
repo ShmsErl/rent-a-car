@@ -17,13 +17,13 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    User findByUsername(String username);
+       User findByUsername(String username);
 
     @Query("SELECT AVG(u.id) FROM User u WHERE u.id BETWEEN :minAge AND :maxAge")
     Double findAverageAgeInAgeRange(@Param("minAge") int minAge, @Param("maxAge") int maxAge);
 
 
-    List<User> findByGender(String gender);
+
 
     @Query("SELECT new com.example.rent_a_car_demo.dtos.responses.GetUserResponse(u.firstName, u.lastName, u.username, u.email, u.phone, u.gender, u.birthDate)" +
             "FROM User u WHERE u.birthDate > :birthDate")
@@ -38,9 +38,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("DELETE FROM User u WHERE u.username = :username")
     void deleteByUsername(String username);
 
-    User findByEmail(String email);
 
-    User findByPassword(String password);
 
 }
 

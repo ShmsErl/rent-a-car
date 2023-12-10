@@ -108,4 +108,11 @@ public class BrandManager implements BrandService {
     public List<GetBrandListResponse> findByNameLengthGreaterThan(int length) {
         return this.brandRepository.findByNameLengthGreaterThan(length);
     }
+    @Override
+    public void updateNameByIdAndName(String name, int id){
+
+        this.brandRepository.updateNameByIdAndName(name,id);
+
+
+    }
 }

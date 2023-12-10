@@ -70,6 +70,11 @@ public class BrandsController {
 
         return this.brandService.findByNameLengthGreaterThan(length);
     }
+    @PutMapping("/update2")
+    public void updateNameByIdAndName(@RequestParam  String name, int id){
+
+        this.brandService.updateNameByIdAndName(name, id);
+    }
 
 
 

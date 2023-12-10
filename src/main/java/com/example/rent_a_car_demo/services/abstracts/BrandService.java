@@ -15,7 +15,7 @@ public interface BrandService {
 
     GetBrandResponse getBrandById(int id);
 
-    String createBrand(AddBrandRequest addBrandRequest);
+    String createBrand(AddBrandRequest addBrandRequest) throws Exception;
 
     String updateBrand(UpdateBrandRequest updateBrandRequest) throws Exception;
 

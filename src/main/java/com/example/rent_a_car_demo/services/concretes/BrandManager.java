@@ -43,7 +43,12 @@ public class BrandManager implements BrandService {
         return dto;
     }
 
-    public String createBrand(AddBrandRequest addBrandRequest) {
+    public String createBrand(AddBrandRequest addBrandRequest) throws Exception {
+        boolean result = this.brandRepository.existsByName(addBrandRequest.getName());
+        if(result){
+            throw new Exception("Already exists Brand Name");
+        }
+
         Brand brand = new Brand();
         brand.setName(addBrandRequest.getName());
         brandRepository.save(brand);

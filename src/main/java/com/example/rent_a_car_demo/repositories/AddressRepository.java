@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface AddressRepository extends JpaRepository<Address, Integer> {
 
+    boolean existsByAddress(String address);
+
     List<Address> findByCountryOrCity(String country, String city);
 
     List<Address> findByCountryLike(String country);

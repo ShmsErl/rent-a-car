@@ -64,6 +64,10 @@ public class AddressManager implements AddressService {
     }
 
     public void saveAddress(AddAddressRequest address) {
+        if(this.addressRepository.existsByAddress(address.getAddress())){
+
+            throw new RuntimeException("Girilen Address Mevcut");
+        }
 
         Address createAddress = new Address();
 
@@ -143,7 +147,7 @@ public class AddressManager implements AddressService {
     @Override
     public List<GetAddressListResponse> addressByCityLike(String city) {
 
-            return this.addressRepository.addressByCityLike(city);
+        return this.addressRepository.addressByCityLike(city);
     }
 
     @Override

@@ -11,6 +11,8 @@ import java.util.List;
 
 public interface BrandRepository extends JpaRepository<Brand, Integer> {
 
+
+
     List<Brand> findByNameStartingWith(String name);
 
     List<Brand> findByNameEndingWith(String name);

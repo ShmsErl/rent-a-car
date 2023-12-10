@@ -30,7 +30,7 @@ public class BrandsController {
     }
 
     @PostMapping("/create")
-    public String createBrand(@RequestBody AddBrandRequest addBrandRequest) {
+    public String createBrand(@RequestBody AddBrandRequest addBrandRequest) throws Exception {
 
         return this.brandService.createBrand(addBrandRequest);
     }

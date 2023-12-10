@@ -10,7 +10,7 @@ import java.util.List;
 public interface CarTypeService {
     List<GetCarTypeListResponse> getAllTypes();
     GetCarTypeResponse getCarTypeById(int id);
-    String saveCarType(AddCarTypeRequest addCarTypeRequest);
+    String saveCarType(AddCarTypeRequest addCarTypeRequest) throws Exception;
     String updateCarType(UpdateCarTypeRequest updateCarTypeRequest) throws Exception;
     String deleteCarType(int id) throws Exception;
 }

@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface CarTypeRepository extends JpaRepository<CarType, Integer> {
 
+    boolean existsByName(String name);
+
 
 }

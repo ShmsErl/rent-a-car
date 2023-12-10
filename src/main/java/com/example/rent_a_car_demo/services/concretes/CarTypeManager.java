@@ -41,7 +41,12 @@ public class CarTypeManager implements CarTypeService {
         return dto;
     }
 
-    public String saveCarType(AddCarTypeRequest addCarTypeRequest) {
+    public String saveCarType(AddCarTypeRequest addCarTypeRequest) throws Exception {
+
+        if(this.carTypeRepository.existsByName(addCarTypeRequest.getName())){
+
+            throw new Exception("Aldready exists Licence Plate");
+        }
         CarType carType = new CarType();
         carType.setName(addCarTypeRequest.getName());
         carTypeRepository.save(carType);

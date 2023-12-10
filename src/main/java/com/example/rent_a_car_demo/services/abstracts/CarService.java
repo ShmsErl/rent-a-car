@@ -17,7 +17,7 @@ public interface CarService {
 
     GetCarResponse getCarById(int id);
 
-    String saveCar(AddCarRequest addCarRequest);
+    String saveCar(AddCarRequest addCarRequest) throws Exception;
 
     String updateCar(UpdateCarRequest updateCarRequest) throws Exception;
 

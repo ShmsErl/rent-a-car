@@ -30,7 +30,7 @@ public class CarController {
     }
 
     @PostMapping("/add")
-    public String saveCar(@RequestBody AddCarRequest addCarRequest) {
+    public String saveCar(@RequestBody AddCarRequest addCarRequest) throws Exception {
         return carService.saveCar(addCarRequest);
     }
 

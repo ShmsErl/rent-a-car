@@ -45,12 +45,19 @@ public class CarManager implements CarService {
         return dto;
     }
 
-    public String saveCar(AddCarRequest addCarRequest) {
+    public String saveCar(AddCarRequest addCarRequest) throws Exception {
+
+        if(this.carRepository.existsByLicencePlate(addCarRequest.getLicencePlate())){
+
+            throw new Exception("Aldready exists Licence Plate");
+        }
         Car car = new Car();
         car.setColor(addCarRequest.getColor());
         car.setYear(addCarRequest.getYear());
         car.setRentalFee(addCarRequest.getRentalFee());
         car.setLicencePlate(addCarRequest.getLicencePlate());
+        car.setCarType(addCarRequest.getCarType());
+        car.setModel(addCarRequest.getModel());
         carRepository.save(car);
 
         return "Transaction Successful ";

@@ -1,4 +1,6 @@
 package com.example.rent_a_car_demo.dtos.requests;
+import com.example.rent_a_car_demo.models.CarType;
+import com.example.rent_a_car_demo.models.Model;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,4 +24,13 @@ public class AddCarRequest {
     @NotBlank (message = "Plaka bilgisi boş olamaz")
     @Pattern(regexp = "[A-Z0-9]{1,10}", message = "Geçerli bir plaka giriniz (en fazla 10 karakter, büyük harf ve rakamlardan oluşmalı)")
     private String licencePlate;
+    @NotBlank
+    @NotNull
+    private Model model;
+
+    @NotBlank
+    @NotNull
+    private CarType carType;
+
+
 }

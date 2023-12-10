@@ -5,6 +5,7 @@ import com.example.rent_a_car_demo.dtos.requests.UpdateUserRequest;
 import com.example.rent_a_car_demo.dtos.responses.GetUserListResponse;
 import com.example.rent_a_car_demo.dtos.responses.GetUserResponse;
 import com.example.rent_a_car_demo.services.abstracts.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
@@ -41,14 +42,14 @@ public class UsersController {
 
 
     @PostMapping("/add")
-    public String saveUser(@RequestBody AddUserRequest user) throws Exception {
+    public String saveUser(@Valid @RequestBody AddUserRequest user) throws Exception {
 
 
         return userService.saveUser(user);
     }
 
     @PutMapping("/{id}")
-    public String updateUser(@PathVariable int id, @RequestBody UpdateUserRequest user) throws Exception {
+    public String updateUser(@Valid  @PathVariable int id, @RequestBody UpdateUserRequest user) throws Exception {
 
 
         return userService.updateUser(id, user);

@@ -7,6 +7,7 @@ import com.example.rent_a_car_demo.dtos.responses.GetRentalResponse;
 import com.example.rent_a_car_demo.models.Rental;
 import com.example.rent_a_car_demo.services.abstracts.RentalService;
 import com.example.rent_a_car_demo.services.concretes.RentalManager;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +31,9 @@ public class RentalController {
         return rentalService.getRentalById(id);
     }
     @PostMapping("/add")
-    public String saveRental(@RequestBody AddRentalRequest rental){return  rentalService.saveRental(rental);}
+    public String saveRental(@Valid  @RequestBody AddRentalRequest rental){return  rentalService.saveRental(rental);}
     @PutMapping("/{id}")
-    public String updateRental(@PathVariable int id,@RequestBody UpdateRentalRequest rental){
+    public String updateRental(@Valid @PathVariable int id,@RequestBody UpdateRentalRequest rental){
 
       return   rentalService.updateRental(rental);
     }

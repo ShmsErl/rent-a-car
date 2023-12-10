@@ -7,6 +7,7 @@ import com.example.rent_a_car_demo.dtos.responses.GetBrandResponse;
 import com.example.rent_a_car_demo.services.abstracts.BrandService;
 import com.example.rent_a_car_demo.services.concretes.BrandManager;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,13 +31,13 @@ public class BrandsController {
     }
 
     @PostMapping("/create")
-    public String createBrand(@RequestBody AddBrandRequest addBrandRequest) throws Exception {
+    public String createBrand(@Valid  @RequestBody AddBrandRequest addBrandRequest) throws Exception {
 
         return this.brandService.createBrand(addBrandRequest);
     }
 
     @PutMapping("/update")
-    public String updateBrand(@RequestBody UpdateBrandRequest updateBrandRequest) throws Exception {
+    public String updateBrand(@Valid @RequestBody UpdateBrandRequest updateBrandRequest) throws Exception {
 
         return this.brandService.updateBrand(updateBrandRequest);
     }

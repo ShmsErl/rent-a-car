@@ -15,7 +15,7 @@ public interface ModelService {
 
     GetModelResponse getModelResponse(int id) throws Exception;
 
-    String createModel(AddModelRequest request);
+    String createModel(AddModelRequest request) throws Exception;
 
     String updateModel(int id, UpdateModelRequest request) throws Exception;
 

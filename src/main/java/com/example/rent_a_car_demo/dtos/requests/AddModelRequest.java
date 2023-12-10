@@ -23,7 +23,7 @@ public class AddModelRequest {
     @NotBlank(message = "Motor gücü bilgisi boş olamaz")
     private String enginePower;
 
-    @NotNull(message = "Marka bilgisi boş olamaz")
+
     private  Brand brand;
 
 

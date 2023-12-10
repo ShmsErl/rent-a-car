@@ -59,9 +59,15 @@ public class ModelManager implements ModelService {
     }
 
 
-    public String createModel(AddModelRequest request) {
-        Model model = new Model();
+    public String createModel(AddModelRequest request) throws Exception {
+        boolean result = this.modelRepository.existsByName(request.getName());
+        if(result){
 
+            throw  new Exception("Already exists Model Name");
+        }
+
+
+        Model model = new Model();
         model.setName(request.getName());
         model.setEnginePower(request.getEnginePower());
         model.setFuelType(request.getFuelType());

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ModelRepository extends JpaRepository<Model, Integer> {
-
+    boolean existsByName(String name);
     Model findByName(String name);
 
     List<Model> findByFuelTypeAndEnginePower(String fuelType, String enginePower);

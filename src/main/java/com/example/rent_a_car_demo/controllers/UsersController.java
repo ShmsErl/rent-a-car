@@ -41,7 +41,7 @@ public class UsersController {
 
 
     @PostMapping("/add")
-    public String saveUser(@RequestBody AddUserRequest user) {
+    public String saveUser(@RequestBody AddUserRequest user) throws Exception {
 
 
         return userService.saveUser(user);

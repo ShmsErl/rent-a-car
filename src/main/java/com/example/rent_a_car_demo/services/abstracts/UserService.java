@@ -18,7 +18,7 @@ public interface UserService {
 
     String updateUser(int id, UpdateUserRequest user) throws Exception;
 
-    String saveUser(AddUserRequest user);
+    String saveUser(AddUserRequest user) throws Exception;
 
     void deleteUser(int id);
 

@@ -88,7 +88,11 @@ public class UserManager implements UserService {
         return "Transaction successful";
     }
 
-    public String saveUser(AddUserRequest user) {
+    public String saveUser(AddUserRequest user) throws Exception {
+        boolean result = this.userRepository.existsByUsername(user.getUsername());
+        if(result){
+            throw new Exception("already exists userName");
+        }
         User createdUser = this.mapperService.forRequest().map(user, User.class);
         createdUser.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
         this.userRepository.save(createdUser);
